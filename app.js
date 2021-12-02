@@ -1,6 +1,13 @@
 const express = require('express');
 const {graphqlHTTP} = require('express-graphql');
-const schema = require('./schema/schema')
+const schema = require('./schema/schema');
+const mongoose = require('mongoose');
+
+mongoose.connect('<db>');
+
+mongoose.connection.once('open', () => {
+    console.log('Connect to database');
+})
 
 const app = express();
 
